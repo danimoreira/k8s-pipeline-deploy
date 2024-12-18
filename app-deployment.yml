@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+    name: php
+    labels: 
+        app: php
+spec:
+    replicas: 6
+    selector:
+        matchLabels:
+            app: php
+    template:
+        metadata:
+            labels: 
+                app: php
+        spec:
+            containers:
+            -   name: php
+                image: danielmoreiradeveloper/projeto-k8s-pipeline-deploy-app:1.0
+                imagePullPolicy: Always
+                ports:
+                - containerPort: 80
